@@ -1,0 +1,16 @@
+---
+- name: deploy | prerequisites
+  hosts: all
+  become: yes
+  become_user: stubgun
+  vars:
+    site_dir: /home/stubgun/www/stubgun.com
+  tasks:
+    - name: create site folder (if needed)
+      file:
+        path: "{{ site_dir }}"
+        state: directory
+    - name: clone repo
+      git:
+        repo: "https://github.com/delameko/stubgun.git"
+        dest: "{{ site_dir }}"

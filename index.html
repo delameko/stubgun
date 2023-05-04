@@ -1,0 +1,872 @@
+<!DOCTYPE html>
+<html class="no-js" lang="en">
+  <head>
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Stubgun</title>
+    <meta content="Maintenance" name="description">
+
+    <script defer="defer" phx-track-static="" type="text/javascript" src="/app.js"></script>
+
+    <style>
+      a {
+        text-decoration: none;
+        transition: all 0.3s ease;
+      }
+      body,
+      h1,
+      h2,
+      h3,
+      h4,
+      p,
+      blockquote,
+      figure,
+      ol,
+      ul {
+        border: 0;
+        margin: 0;
+        padding: 0;
+      }
+      button {
+        appearance: none;
+        background: transparent;
+        border: none;
+        color: inherit;
+        transition: 0.3s;
+        cursor: pointer;
+        font: inherit;
+        -webkit-font-smoothing: inherit;
+        letter-spacing: inherit;
+        margin: 0;
+        overflow: visible;
+        padding: 0;
+        text-align: inherit;
+        text-transform: inherit;
+      }
+      html {
+        -webkit-tap-hightlight-color: transparent;
+      }
+      iframe {
+        border: 0;
+      }
+      img {
+        border: 0;
+        height: auto;
+        max-width: 100%;
+        vertical-align: middle;
+      }
+      main,
+      li {
+        display: block;
+      }
+      p {
+        word-break: break-all;
+      }
+      sup {
+        font-size: 75%;
+        line-height: 0;
+        position: relative;
+        top: -0.5em;
+        vertical-align: baseline;
+      }
+      strong {
+        font-weight: 700;
+      }
+      ul,
+      ol {
+        margin-bottom: 0;
+        margin-top: 0;
+        padding: 0;
+      }
+      ::-moz-focus-inner {
+        border: 0;
+        padding: 0;
+      }
+      html,
+      body,
+      div,
+      article,
+      section,
+      main,
+      footer,
+      header,
+      form,
+      fieldset,
+      legend,
+      pre,
+      code,
+      a,
+      h1,
+      h2,
+      h3,
+      h4,
+      h5,
+      h6,
+      p,
+      ul,
+      ol,
+      li,
+      dl,
+      dt,
+      dd,
+      textarea,
+      table,
+      td,
+      th,
+      tr,
+      input[type=email],
+      input[type=number],
+      input[type=password],
+      input[type=tel],
+      input[type=text],
+      input[type=url],
+      .border-box {
+        box-sizing: border-box;
+      }
+      html {
+        font-family:
+          -apple-system,
+          BlinkMacSystemFont,
+          "Segoe UI",
+          Roboto,
+          Helvetica,
+          Arial,
+          sans-serif,
+          "Apple Color Emoji",
+          "Segoe UI Emoji",
+          "Segoe UI Symbol";
+        font-size: 100%;
+        -webkit-text-size-adjust: 100%;
+        -moz-text-size-adjust: 100%;
+        -ms-text-size-adjust: 100%;
+        -webkit-tap-hightlight-color: transparent;
+      }
+      body {
+        line-height: 1;
+        -moz-osx-font-smoothing: greyscale;
+        -webkit-font-smoothing: antialiased;
+      }
+      input,
+      button,
+      select,
+      textarea {
+        font-family:
+          -apple-system,
+          BlinkMacSystemFont,
+          "Segoe UI",
+          Roboto,
+          Helvetica,
+          Arial,
+          sans-serif,
+          "Apple Color Emoji",
+          "Segoe UI Emoji",
+          "Segoe UI Symbol";
+      }
+      main h1,
+      main h2,
+      main h3,
+      main h4,
+      main h5,
+      main h6 {
+        font-family:
+          "Helvetica Neue",
+          Helvetica,
+          Arial,
+          sans-serif;
+        font-weight: 500;
+        letter-spacing: 0.05em;
+      }
+      main h1 {
+        font-size: 2.828rem;
+        line-height: 4rem;
+        margin: 4rem 0 2rem;
+      }
+      main h2 {
+        font-size: 1.9796rem;
+        line-height: 2.8rem;
+        margin: 2.8rem 0 1.4rem;
+      }
+      main h3 {
+        font-size: 1.6968rem;
+        line-height: 2.4rem;
+        margin: 2.4rem 0 1.2rem;
+      }
+      main h4 {
+        font-size: 1.414rem;
+        line-height: 2rem;
+        margin: 2rem 0 1rem;
+      }
+      main h5 {
+        font-size: 1.2726rem;
+        line-height: 1.8rem;
+        margin: 1.8rem 0 0.9rem;
+      }
+      main h6 {
+        font-size: 1.1312rem;
+        line-height: 1.6rem;
+        margin: 1.6rem 0 0.8rem;
+      }
+      main p,
+      main li {
+        font-size: 1.2rem;
+        font-weight: 300;
+        letter-spacing: 0.05em;
+        line-height: 1.8rem;
+        margin: 1.8rem 0;
+      }
+      main blockquote {
+        font-size: 1.6968rem;
+        line-height: 2.4rem;
+        margin: 2.4rem;
+      }
+      .icon {
+        height: 32px;
+        width: 32px;
+      }
+      .dark .icon-hamburger {
+        background-image: url(data:image/svg+xml;base64,PHN2ZyBjbGlwLXJ1bGU9ImV2ZW5vZGQiIGZpbGwtcnVsZT0iZXZlbm9kZCIgc3Ryb2tlLWxpbmVqb2luPSJyb3VuZCIgc3Ryb2tlLW1pdGVybGltaXQ9IjEuNDE0MjEiIHZpZXdCb3g9IjAgMCAzMiAzMiIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48cGF0aCBkPSJtNCAxMGgyNGMxLjEwNCAwIDItLjg5NiAyLTJzLS44OTYtMi0yLTJoLTI0Yy0xLjEwNCAwLTIgLjg5Ni0yIDJzLjg5NiAyIDIgMnptMjQgNGgtMjRjLTEuMTA0IDAtMiAuODk2LTIgMnMuODk2IDIgMiAyaDI0YzEuMTA0IDAgMi0uODk2IDItMnMtLjg5Ni0yLTItMnptMCA4aC0yNGMtMS4xMDQgMC0yIC44OTYtMiAycy44OTYgMiAyIDJoMjRjMS4xMDQgMCAyLS44OTYgMi0ycy0uODk2LTItMi0yeiIgZmlsbD0iI2ZmZiIgZmlsbC1ydWxlPSJub256ZXJvIi8+PC9zdmc+);
+      }
+      .light .icon-hamburger {
+        background-image: url(data:image/svg+xml;base64,PHN2ZyBlbmFibGUtYmFja2dyb3VuZD0ibmV3IDAgMCAzMiAzMiIgaGVpZ2h0PSIzMiIgdmlld0JveD0iMCAwIDMyIDMyIiB3aWR0aD0iMzIiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+PHBhdGggZD0ibTQgMTBoMjRjMS4xMDQgMCAyLS44OTYgMi0ycy0uODk2LTItMi0yaC0yNGMtMS4xMDQgMC0yIC44OTYtMiAycy44OTYgMiAyIDJ6bTI0IDRoLTI0Yy0xLjEwNCAwLTIgLjg5Ni0yIDJzLjg5NiAyIDIgMmgyNGMxLjEwNCAwIDItLjg5NiAyLTJzLS44OTYtMi0yLTJ6bTAgOGgtMjRjLTEuMTA0IDAtMiAuODk2LTIgMnMuODk2IDIgMiAyaDI0YzEuMTA0IDAgMi0uODk2IDItMnMtLjg5Ni0yLTItMnoiLz48L3N2Zz4=);
+      }
+      .dark {
+        background: #0D1D39;
+        color: #E0E1DD;
+      }
+      .dark a:link,
+      .dark a:visited {
+        color: #778DA9;
+      }
+      .dark a:hover,
+      .dark a:active {
+        color: #A8571E;
+      }
+      .dark a.solid:link,
+      .dark a.solid:visited {
+        color: #E0E1DD;
+      }
+      .dark a.solid:hover,
+      .dark a.solid:active {
+        color: #778DA9;
+      }
+      .alert {
+        border-radius: 5px;
+        color: #FFFFFF;
+        display: block;
+        line-height: 1.4em;
+        margin-bottom: 20px;
+        padding: 10px;
+      }
+      .alert-danger {
+        background: #D30000;
+      }
+      .alert-info {
+        background: #468847;
+        border-color: #D6E9C6;
+        color: #DFF0D8;
+      }
+      .alert p {
+        font-size: 1rem;
+        margin: 0;
+      }
+      .button {
+        color: #FFFFFF;
+        cursor: pointer;
+        font-size: 1em;
+        font-weight: bold;
+        padding: 10px;
+        transition: all 100ms ease-in 0s;
+      }
+      .button-primary {
+        background-color: #225999;
+      }
+      .button-primary:active,
+      .button-primary:focus,
+      .button-primary:hover {
+        background-color: #19416f;
+      }
+      form input[type=text],
+      form input[type=password],
+      form input[type=email],
+      form input[type=url],
+      form input[type=number],
+      form input[type=search],
+      form input:not([type]),
+      form select,
+      form textarea {
+        border: 1px solid #CCC;
+        border-radius: 4px;
+        box-shadow: inset 0 1px 3px #DDD;
+        -webkit-box-sizing: border-box;
+        -moz-box-sizing: border-box;
+        box-sizing: border-box;
+        display: inline-block;
+        font-family:
+          -apple-system,
+          BlinkMacSystemFont,
+          "Segoe UI",
+          Roboto,
+          Helvetica,
+          Arial,
+          sans-serif,
+          "Apple Color Emoji",
+          "Segoe UI Emoji",
+          "Segoe UI Symbol";
+        font-size: 1em;
+        padding: 0.5em 0.6em;
+        vertical-align: middle;
+        width: 100%;
+      }
+      form input[type=text]:focus,
+      form input[type=password]:focus,
+      form input[type=email]:focus,
+      form input[type=url]:focus,
+      form input[type=number]:focus,
+      form input[type=search]:focus,
+      form input:not([type]):focus,
+      form select:focus,
+      form textarea:focus {
+        border-color: #129FEA;
+        outline: 0;
+      }
+      form input[type=text][disabled],
+      form input[type=password][disabled],
+      form input[type=email][disabled],
+      form input[type=url][disabled],
+      form input[type=number][disabled],
+      form input[type=search][disabled],
+      form input:not([type])[disabled],
+      form select[disabled],
+      form textarea[disabled] {
+        background-color: #EAEDED;
+        color: #CAD2D3;
+        cursor: not-allowed;
+      }
+      form input[type=file]:focus,
+      form input[type=radio]:focus,
+      form input[type=checkbox]:focus {
+        outline: thin solid #129FEA;
+        outline: 1px auto #129FEA;
+      }
+      form input[type=file]:focus:invalid:focus,
+      form input[type=radio]:focus:invalid:focus,
+      form input[type=checkbox]:focus:invalid:focus {
+        outline-color: #E9322D;
+      }
+      form .checkbox,
+      form .radio {
+        display: block;
+        margin: 0.5em 0;
+      }
+      form input:focus:invalid,
+      form select:focus:invalid,
+      form textarea:focus:invalid {
+        border-color: #E9322D;
+        color: #B94A48;
+      }
+      form input[readonly],
+      form select[readonly],
+      form textarea[readonly] {
+        background-color: #EEE;
+        border-color: #CCC;
+        color: #777;
+      }
+      form fieldset {
+        border: 0;
+        margin: 0;
+        padding: 0.35em 0 0.75em;
+      }
+      form label {
+        display: inline-block;
+        font-size: 1.2em;
+        margin: 0.5em 0;
+        width: 100%;
+      }
+      form select {
+        background-color: #FFF;
+        border: 1px solid #CCC;
+        height: 2.25em;
+      }
+      form select[multiple] {
+        height: auto;
+      }
+      form .error-block label {
+        margin-bottom: 0;
+        border-radius: 0 0 4px 4px;
+      }
+      form .error-block input {
+        border: 3px solid #D30000;
+        border-radius: 4px 4px 0 0;
+        margin-bottom: 0;
+      }
+      form .error-block .error-message {
+        background: #D30000;
+        border-radius: 0 0 4px 4px;
+        display: block;
+        padding: 10px;
+      }
+      .logo {
+        background-image: url(./stubgun-logo.svg);
+        background-repeat: no-repeat;
+        background-position-x: center;
+        display: block;
+        height: 35px;
+        margin: 6px 0;
+        text-indent: -9999px;
+        width: 136px;
+      }
+      .logo--alpha {
+        background-image: url(./stubgun-alpha-logo.svg);
+        width: 220px;
+      }
+      .main-menu {
+        width: 100%;
+      }
+      .main-menu li {
+        display: inline-block;
+        line-height: 50px;
+        text-align: center;
+        width: 4em;
+      }
+      .panel {
+        background-color: #0D1B2A;
+        border: 1px solid #415A77;
+        border-radius: 6px;
+        margin: 0 10px 10px 0;
+        padding: 10px;
+      }
+      .block-panel__header {
+        background: #123865;
+        padding: 10px;
+      }
+      .block-panel__header h2 {
+        font-family:
+          "Helvetica Neue",
+          Helvetica,
+          Arial,
+          sans-serif;
+        font-size: 1.5em;
+        font-weight: bold;
+        margin: 0;
+        padding: 0;
+      }
+      .block-panel__content {
+        background-color: #0D1B2A;
+        padding: 10px 20px;
+      }
+      .block-panel__footer {
+        background-color: #0D1B2A;
+        padding: 20px;
+      }
+      .user-menu label,
+      .user-menu__avatar {
+        cursor: pointer;
+      }
+      .user-menu {
+        -webkit-touch-callout: none;
+        -webkit-user-select: none;
+        -khtml-user-select: none;
+        -moz-user-select: none;
+        -ms-user-select: none;
+        user-select: none;
+        display: inline-block;
+        position: relative;
+        margin: 6px 0;
+        width: 100%;
+      }
+      .user-menu a {
+        display: block;
+      }
+      .user-menu a:link,
+      .user-menu a:visited {
+        color: #F8F8F7;
+      }
+      .user-menu a:active,
+      .user-menu a:hover {
+        color: #B8C3ED;
+      }
+      .user-menu__arrow {
+        background: url(./arrow-down-ZG5IB2WY.png) no-repeat center;
+        display: inline-block;
+        height: 36px;
+        width: 20px;
+      }
+      .user-menu__avatar {
+        background: url(./default-WZGYEAWU.jpg);
+        background-size: contain;
+        height: 36px;
+        display: inline-block;
+        width: 36px;
+      }
+      .user-menu__checkbox {
+        display: none;
+      }
+      .user-menu__checkbox:checked + ul {
+        display: block;
+      }
+      .user-menu__list {
+        background: #0A1830;
+        border: 1px solid #F8F8F7;
+        display: none;
+        padding: 0 10px;
+        position: absolute;
+        right: 0;
+        top: 54px;
+      }
+      .user-menu__list li {
+        display: block;
+        float: none;
+        list-style: none;
+        position: relative;
+        text-align: left;
+        width: 200px;
+      }
+      .user-menu__list li:hover {
+        background: #0e2345;
+      }
+      .user-menu__list a {
+        padding: 10px;
+        width: 100%;
+      }
+      .user-menu__signin {
+        display: inline-block;
+      }
+      .user-menu__signin a {
+        padding: 10px 0;
+      }
+      .user-menu__username {
+        align-items: center;
+        display: flex;
+        justify-content: flex-end;
+        outline: 0;
+      }
+      .user-menu__username span {
+        display: inline-block;
+        padding: 0 10px;
+      }
+      @media (any-pointer:coarse) {
+        .user-menu ul li {
+          padding: 20px;
+        }
+      }
+      footer {
+        padding: 10px 10px 0;
+      }
+      footer p {
+        font-size: 0.7em;
+        height: 20px;
+        line-height: 1.7em;
+        margin: 0;
+      }
+      footer .version {
+        float: right;
+      }
+      .grid {
+        -moz-column-count: 1;
+        -webkit-column-count: 1;
+        column-count: 1;
+        -moz-column-gap: 0px;
+        -webkit-column-gap: 0px;
+        column-gap: 0px;
+        width: 100%;
+      }
+      .grid .grid-item {
+        display: inline-block;
+        margin-bottom: 0px;
+        width: 100%;
+      }
+      @media screen and (min-width:650px) and (max-width:999px) {
+        .grid {
+          -moz-column-count: 2;
+          -webkit-column-count: 2;
+          column-count: 2;
+        }
+      }
+      @media screen and (min-width:1000px) and (max-width:1199px) {
+        .grid {
+          -moz-column-count: 3;
+          -webkit-column-count: 3;
+          column-count: 3;
+        }
+      }
+      @media screen and (min-width:1200px) and (max-width:1699px) {
+        .grid {
+          -moz-column-count: 4;
+          -webkit-column-count: 4;
+          column-count: 4;
+        }
+      }
+      @media screen and (min-width:1700px) and (max-width:1799px) {
+        .grid {
+          -moz-column-count: 5;
+          -webkit-column-count: 5;
+          column-count: 5;
+        }
+      }
+      @media screen and (min-width:1800px) {
+        .grid {
+          -moz-column-count: 6;
+          -webkit-column-count: 6;
+          column-count: 6;
+        }
+      }
+      .header {
+        display: -webkit-box;
+        display: -moz-box;
+        display: -ms-flexbox;
+        display: -webkit-flex;
+        display: flex;
+        -webkit-box-pack: space-between;
+        -ms-flex-pack: space-between;
+        justify-content: space-between;
+        align-content: stretch;
+        align-items: flex-start;
+        flex-flow: row wrap;
+      }
+      .header__logo-container {
+        height: 50px;
+        margin: 0 0 0 15px;
+        order: 1;
+        width: 45%;
+      }
+      .header__main-menu-container {
+        display: none;
+        height: 50px;
+        margin: 0 15px 0 15px;
+        order: 3;
+        width: 100%;
+      }
+      .header__user-menu-container {
+        height: 50px;
+        margin: 0 15px 0 0;
+        order: 2;
+        width: 45%;
+      }
+      @media (min-width:768px) {
+        .header {
+          display: -webkit-box;
+          display: -moz-box;
+          display: -ms-flexbox;
+          display: -webkit-flex;
+          display: flex;
+          -webkit-box-pack: space-between;
+          -ms-flex-pack: space-between;
+          justify-content: space-between;
+          flex-flow: row nowrap;
+        }
+        .header__logo-container {
+          order: 1;
+          width: 25%;
+        }
+        .header__main-menu-container {
+          display: block;
+          order: 2;
+          width: 50%;
+        }
+        .header__user-menu-container {
+          order: 3;
+          width: 25%;
+        }
+      }
+      body {
+        display: -webkit-box;
+        display: -moz-box;
+        display: -ms-flexbox;
+        display: -webkit-flex;
+        display: flex;
+        flex-direction: column;
+        height: 100%;
+        min-width: 320px;
+      }
+      html {
+        height: 100%;
+      }
+      .header-container {
+        flex: 1;
+        width: 100%;
+        z-index: 999999;
+      }
+      .content-container {
+        flex: 1 0 auto;
+        flex-shrink: 0;
+        padding: var(--space) var(--space) 0;
+        width: 100%;
+      }
+      .content-container::after {
+        content: "\a0";
+        display: block;
+        margin-top: var(--space);
+        height: 0px;
+        visibility: hidden;
+      }
+      main {
+        margin: 20px 1rem 0;
+      }
+      .footer-container {
+        flex: none;
+      }
+      @viewport {
+        width: extend-to-zoom;
+        zoom: 1;
+      }
+      @-ms-viewport {
+        width: extend-to-zoom;
+        zoom: 1;
+      }
+      .header {
+        background-color: #0D1B2A;
+        border-bottom: 1px solid #415A77;
+      }
+      main.home {
+        margin-right: 5px;
+      }
+      main.home h1 {
+        display: none;
+      }
+      main.home .feed h3 {
+        margin: 0;
+      }
+      main.home .feed header {
+        line-height: 2em;
+        text-align: center;
+      }
+      main.home .feed ul {
+        margin-bottom: 0;
+      }
+      main.home .feed li {
+        font-size: 1rem;
+        margin: 0;
+        padding: 10px;
+      }
+      main.home .feed li:nth-child(even) {
+        background: #0D1D39;
+      }
+      main.home .feed li:last-child {
+        border-bottom: 0;
+      }
+      main.home a {
+        text-decoration: none;
+      }
+      main.home a:link,
+      main.home a:active {
+        color: #F8F8F7;
+      }
+      main.home a:hover {
+        color: #FFF;
+      }
+      main.home a:visited {
+        color: #bdbdb3;
+      }
+      .privacy ul {
+        list-style: none;
+        padding-left: 2rem;
+      }
+      .privacy li {
+        padding-left: 1em;
+        text-indent: -1.5em;
+      }
+      .privacy li::before {
+        content: "\2022";
+        padding-right: 1em;
+      }
+      .register-form,
+      .signin-form {
+        margin: 20px auto 2em;
+        min-width: 320px;
+        max-width: 500px;
+        width: 100%;
+      }
+      .register-form .button,
+      .signin-form .button {
+        margin-top: 28px;
+        width: 100%;
+      }
+      .register-form .control-group,
+      .signin-form .control-group {
+        margin-bottom: 20px;
+      }
+      .register-form .controls,
+      .signin-form .controls {
+        padding: 10px 0 0;
+        text-align: center;
+      }
+      .register-form fieldset,
+      .signin-form fieldset {
+        padding: 0;
+      }
+      .user.show {
+        margin: 0;
+      }
+      .user.show .profile-header {
+        align-items: flex-end;
+        background: blueviolet;
+        display: flex;
+        height: 150px;
+        padding: 10px;
+      }
+      .user.show .profile-header__avatar {
+        margin: 0 15px 0 5px;
+      }
+      .user.show .profile-header__username {
+        font-size: 2em;
+        line-height: 1.5em;
+        margin: 0;
+      }
+      .user.show .profile-header__status {
+        font-size: 1.2em;
+        line-height: 1.2rem;
+        margin: 0;
+      }
+      .user.show .profile-content {
+        display: flex;
+        margin: 20px 1em;
+      }
+      .user.show .profile-content__details,
+      .user.show .profile-content__social {
+        min-width: 320px;
+      }
+    </style>
+  </head>
+
+  <body class="dark" data-theme="dark">
+
+    <header class="header-container">
+
+      <nav class="header">
+
+        <div class="header__logo-container">
+          <a class="header__logo header__logo--alpha logo logo--alpha" href="/" title="Stubgun">Stubgun</a>
+        </div>
+
+      </nav>
+
+    </header>
+
+    <div class="content-container">
+
+      <main class="container">
+
+        <section class="feed panel" style="margin: 0 auto; text-align: center;">
+
+          <header>
+            <h3></h3>
+          </header>
+
+        </section>
+
+      </main>
+
+    </div>
+
+    <footer class="footer-container">
+      <p class="text-muted">
+        <span class="copyright">Copyright © 2014-2023. All rights reserved.</span>
+        <span class="version">v3.2.0</span>
+      </p>
+    </footer>
+
+  </body>
+
+</html>
